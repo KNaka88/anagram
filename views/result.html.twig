@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>result</title>
+    </head>
+    <body>
+        {% if results.checkAnagram %}
+        <!-- if true -->
+        <h3>True</h3>
+        {% endif %}
+
+        {% if not results.checkAnagram %}
+        <!-- if false -->
+        <h3>False</h3>
+        {% endif %}
+
+        <a href="/"><button>Back</button></a>
+    </body>
+</html>

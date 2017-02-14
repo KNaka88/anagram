@@ -32,20 +32,31 @@
         }
 
         function save(){
-            array_push($_SESSION['list_of_anagrams'], $this);
+            if($this->checkAnagram()){
+                array_push($_SESSION['list_of_anagrams'], $this);
+            }
         }
 
-        function checkAnagram ($user_input1, $user_input2)
+        function checkAnagram ()
         {
-            $tempString1 = str_split($user_input1);
-            $tempString2 = str_split($user_input2);
+            $user_input1 = str_split($this->user_input1);
+            $user_input2 = str_split($this->user_input2);
 
-            sort($tempString1);
-            sort($tempString2);
+            sort($user_input1);
+            sort($user_input2);
 
-            $tempString1 = implode("", $tempString1);
-            $tempString2 = implode("", $tempString2);
+            $user_input1 = implode("", $user_input1);
+            $user_input2 = implode("", $user_input2);
 
-            return $tempString1 == $tempString2;
+            return $user_input1 == $user_input2;
         }
+
+        static function getAll(){
+            return $_SESSION['list_of_anagrams'];
+        }
+
+        static function deleteAll(){
+            $_SESSION['list_of_anagrams'] = array();
+        }
+
     }

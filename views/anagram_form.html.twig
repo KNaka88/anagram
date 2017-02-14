@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Anagram Checker</h1>
+        <form action="/result" method="post">
+            <input type="text" name="user_input1" placeholder="enter a word">
+            <input type="text" name="user_input2" placeholder="enter another word">
+            <button type="submit">Check!</button>
+        </form>
+
+
+        <h2>You found these anagrams</h2>
+        {% for result in show_results %}
+            <div>
+                <p>Anagram:</p>
+                <ul>
+                    <li>{{ result.getUserInput1() }}</li>
+                    <li>{{ result.getUserInput2() }}</li>
+                </ul>
+            </div>
+        {% endfor %}
+
+        <a href="/delete"><button>Delete All</button></a>
+
+
+    </body>
+</html>
