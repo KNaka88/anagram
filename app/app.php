@@ -9,6 +9,15 @@
     "twig.path" => __DIR__."/../views"
     ));
 
+
+    session_start();
+    if (empty($_SESSION['list_of_anagrams'])){
+        $_SESSION['list_of_anagrams'] = array();
+    }
+
+
     $app->get("/", function() use ($app) {
         return "hello";
     });
+
+    return $app;
