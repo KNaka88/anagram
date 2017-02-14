@@ -2,32 +2,50 @@
 
     class Anagram
     {
-        private $user_input;
+        private $user_input1;
+        private $user_input2;
 
-        function __construct($user_input)
+        function __construct($user_input1, $user_input2)
         {
-            $this->user_input = $user_input;
+            $this->user_input1 = $user_input1;
+            $this->user_input2 = $user_input2;
         }
 
-        function getUserInput()
+        function getUserInput1()
         {
-            return $this->user_input;
+            return $this->user_input1;
         }
 
-        function setUserInput($new_user_input)
+        function getUserInput2()
         {
-            $this->user_input = $new_user_input;
+            return $this->user_input2;
+        }
+
+        function setUserInput1($new_user_input1)
+        {
+            $this->user_input1 = $new_user_input1;
+        }
+
+        function setUserInput2($new_user_input2)
+        {
+            $this->user_input2 = $new_user_input2;
         }
 
         function save(){
             array_push($_SESSION['list_of_anagrams'], $this);
         }
 
-        function checkAnagram ($user_input)
+        function checkAnagram ($user_input1, $user_input2)
         {
-            $tempString = str_split($user_input);
-            sort($tempString);
-            $tempString = implode("", $tempString);
-            return $tempString;
+            $tempString1 = str_split($user_input1);
+            $tempString2 = str_split($user_input2);
+
+            sort($tempString1);
+            sort($tempString2);
+
+            $tempString1 = implode("", $tempString1);
+            $tempString2 = implode("", $tempString2);
+
+            return $tempString1 == $tempString2;
         }
     }
